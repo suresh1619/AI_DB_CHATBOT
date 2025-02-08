@@ -1,0 +1,35 @@
+<!-- demo.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Query Results</title>
+</head>
+<body>
+    <h1>Product Query Results</h1>
+    
+    {% if results %}
+        <table>
+            <thead>
+                <tr>
+                    {% for column in results.0.keys %}
+                        <th>{{ column }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in results %}
+                    <tr>
+                        {% for column, value in row.items %}
+                            <td>{{ value }}</td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No data found.</p>
+    {% endif %}
+</body>
+</html>
