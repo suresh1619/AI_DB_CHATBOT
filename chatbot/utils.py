@@ -3,7 +3,7 @@ import re
 from langgraph.graph import StateGraph
 from django.db import connection
 
-genai.configure(api_key="AIzaSyAUsOjPWJVRyusiucDsa-74PAYv1k5W0Fk")
+genai.configure(api_key="")
 model = genai.GenerativeModel("gemini-1.5-flash")
 
 class QueryState:
