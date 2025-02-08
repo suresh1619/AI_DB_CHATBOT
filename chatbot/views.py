@@ -6,10 +6,7 @@ from .models import Supplier, Product
 from .serializers import SupplierSerializer, ProductSerializer
 from .utils import workflow, QueryState
 
-# Home page to render API template
 
-
-# Function-based view for Suppliers
 @api_view(['GET', 'POST'])
 def supplier_list(request):
     if request.method == 'GET':
@@ -24,7 +21,7 @@ def supplier_list(request):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-# Function-based view for Products
+
 @api_view(['GET', 'POST'])
 def product_list(request):
     if request.method == 'GET':
@@ -48,7 +45,7 @@ def query_view(request):
     if not user_query:
         return Response({"error": "Query parameter is required."}, status=status.HTTP_400_BAD_REQUEST)
     
-    # Initialize QueryState and invoke LangGraph workflow
+    
     initial_state = QueryState(query=user_query).to_dict()
     final_state = workflow.invoke(initial_state)
     
